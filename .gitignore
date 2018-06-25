@@ -1,0 +1,13 @@
+venv
+.env
+.coverage
+.idea
+__pycache__
+
+*/__pycache__
+*.pyc
+product_hunt/db.sqlite3
+*.coverage
+.DS_Store
+env.sh
+htmlcov
