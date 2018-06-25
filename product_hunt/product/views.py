@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def index(response):
-    return HttpResponse('Hello this is product hunt clone')
+def index(request):
+    return render(request, 'product/index.html')
