@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.views import View, generic
 
@@ -9,6 +9,9 @@ from .models import Product
 
 
 class ProductCreateView(View):
+    """
+        view for product creation
+    """
     form_class = ProductForm
     initial = {'key': 'value'}
     template_name = 'product/create.html'
