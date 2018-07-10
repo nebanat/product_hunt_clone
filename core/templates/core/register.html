@@ -1,0 +1,31 @@
+{% extends "product/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <br><br>
+        <div class="columns is-mobile">
+            <div class="column is-one-third is-offset-one-third">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="title has-text-centered">Product Hunt</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% include 'snippets/form_fields.html' %}
+                            <br>
+                            <div class="field">
+                              <div class="control">
+                                <button class="button is-link is-fullwidth">
+                                    Register
+                                </button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

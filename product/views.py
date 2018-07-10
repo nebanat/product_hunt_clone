@@ -3,11 +3,14 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.views import View, generic
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from .forms import ProductForm
 from .models import Product
 
 
+@method_decorator(login_required, name='dispatch')
 class ProductCreateView(View):
     """
         view for product creation
