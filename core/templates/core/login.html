@@ -1,0 +1,63 @@
+{% extends "product/base.html" %}
+
+{% block content %}
+<div class="container">
+<div class="columns is-mobile">
+    <div class="column is-one-third is-offset-one-third">
+        <br><br><br><br>
+        {% if form.errors %}
+            <div class="notification is-danger">
+                 <button class="delete"></button>
+                 Your username and password didn't match. Please try again.
+             </div>
+        {% endif %}
+        <div class="card is-clearfix">
+            <div class="card-content">
+                <div class="content">
+                    <h3 class="title has-text-centered">Product Hunt</h3>
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+
+                            <div class="field">
+                              <div class="control">
+                                <input class="input is-hover" type="text"
+                                       placeholder="{{ form.username.label }}"
+                                       required="required"
+                                        value=""
+                                        name="{{ form.username.html_name }}">
+                              </div>
+                            </div>
+
+                            <br/>
+                            <div class="field">
+                              <div class="control">
+                                <input class="input is-hover" type="password"
+                                       placeholder="{{ form.password.label }}"
+                                       required="required"
+                                        name="{{ form.password.html_name }}">
+                              </div>
+                            </div>
+
+
+                        <div class="field">
+                          <div class="control">
+                            <button class="button is-link is-fullwidth">
+                                Login
+                            </button>
+                          </div>
+                          <input type="hidden" name="next" value="{{ next }}" />
+
+                       </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}
