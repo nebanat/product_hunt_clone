@@ -1,0 +1,40 @@
+{% extends "product/base.html" %}`
+
+{% block title %} New product {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <br/>
+        <br/>
+        <div class="columns is-mobile">
+            <div class="column is-two-thirds">
+                <h1 class="title">Post a new product</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification is-primary">
+                          <button class="delete"></button>
+                            {{ message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+               <div class="card">
+                   <div class="card-content">
+                       <form action="{% url 'product:create' %}" method="post">
+                           {% csrf_token %}
+
+                           {% include 'snippets/form_fields.html' %}
+
+                           <div class="field">
+                              <div class="control">
+                                <button class="button is-link">
+                                    Submit
+                                </button>
+                              </div>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

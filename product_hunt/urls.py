@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url
 
 urlpatterns = [
     path('product/', include('product.urls')),
+    path('core/', include('core.urls')),
     path('admin/', admin.site.urls),
+]
+
+# Add Django site authentication urls (for login, logout, password management)
+urlpatterns += [
+    url(r'^accounts/login/$', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),
+    url(r'accounts/logout/$', auth_views.LogoutView.as_view(), name='logout')
 ]
