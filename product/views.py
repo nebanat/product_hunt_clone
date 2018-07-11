@@ -39,6 +39,14 @@ class ProductCreateView(View):
             return HttpResponseRedirect(reverse('product:create'))
 
 
+class ProductDetailView(generic.DetailView):
+    context_object_name = 'product'
+    model = Product
+    template_name = 'product/single_detail.html'
+
+
 class ProductListView(generic.ListView):
+    context_object_name = 'products'
     model = Product
     template_name = 'product/index.html'
+
