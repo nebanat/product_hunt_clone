@@ -6,6 +6,7 @@
         </p>
         </figure>
         <div class="media-content">
+         <a class="has-text-black" href="{% url 'product:detail' product.id %}">
         <div class="content">
           <p>
             <strong>{{ product.name }}</strong>
@@ -13,6 +14,8 @@
             {{ product.description }}
           </p>
         </div>
+         </a>
+
         <nav class="level">
           <div class="level-left">
                <span class="tag is-light">software</span>
