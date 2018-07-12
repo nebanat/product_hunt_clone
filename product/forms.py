@@ -19,3 +19,4 @@ class ProductForm(ModelForm):
             'class': 'textarea'
         })
 
+
