@@ -1,42 +1,30 @@
-from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.views import View, generic
+from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import FormView
 
 from .forms import ProductForm
 from .models import Product
 
 
 @method_decorator(login_required, name='dispatch')
-class ProductCreateView(View):
+class ProductCreateView(FormView):
     """
-        view for product creation
+        view for creating a new product
     """
     form_class = ProductForm
-    initial = {'key': 'value'}
     template_name = 'product/create.html'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form': form})
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            # clean up data
-            name = form.cleaned_data['name']
-            description = form.cleaned_data['description']
-            link = form.cleaned_data['link']
-
-            # creates a new product
-            new_product = Product(name=name, description=description, link=link)
-            new_product.save()
-
-            messages.success(request, 'Product created successfully')
-            return HttpResponseRedirect(reverse('product:create'))
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, 'Product created successfully')
+        return reverse('product:create')
 
 
 class ProductDetailView(generic.DetailView):
