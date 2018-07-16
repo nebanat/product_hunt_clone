@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
+# from product_hunt.product.views import ProductListView
 
 urlpatterns = [
-    path('product/', include('product.urls')),
+    # path('', ProductListView.as_view()),
+    path('products/', include('product.urls')),
     path('core/', include('core.urls')),
     path('admin/', admin.site.urls),
 ]
