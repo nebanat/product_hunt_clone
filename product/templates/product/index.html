@@ -3,26 +3,26 @@
 {% block title %} Product home page {% endblock %}
 
 {% block content %}
-    <section class="section">
-        <div class="container">
-          <h1 class="title">
-            Product hunt
-          </h1>
-          <p class="subtitle">
-            Place for product-loving <strong>enthusiasts</strong>!
-          </p>
+    <section class="hero is-medium is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Product hunt
+                </h1>
+                <h2 class="subtitle">
+                    Place for product-loving <strong>enthusiasts</strong>
+                </h2>
+            </div>
         </div>
     </section>
+    <br><br>
     <div class="container">
         <div class="columns">
             <div class="column is-three-quarters">
                 <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            Recent Product
-                        </p>
-                    </header>
                     <div class="card-content">
+                        <h1 class="title is-5">Recent Products</h1>
+                        <hr>
                         {% include 'snippets/product_list_item.html' with products=products %}
                     </div>
                 </div>
