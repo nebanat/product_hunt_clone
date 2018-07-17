@@ -23,6 +23,7 @@ urlpatterns = [
     # path('', ProductListView.as_view()),
     path('products/', include('product.urls')),
     path('core/', include('core.urls')),
+    path('comments/', include('comment.urls')),
     path('admin/', admin.site.urls),
 ]
 

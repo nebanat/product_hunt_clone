@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'product.apps.ProductConfig',
     'core.apps.CoreConfig',
+    'comment.apps.CommentConfig',
 ]
 
 MIDDLEWARE = [

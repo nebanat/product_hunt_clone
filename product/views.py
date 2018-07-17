@@ -8,6 +8,8 @@ from django.views.generic.edit import FormView
 from .forms import ProductForm
 from .models import Product
 
+from comment.forms import CommentForm
+
 
 @method_decorator(login_required, name='dispatch')
 class ProductCreateView(FormView):
@@ -31,6 +33,12 @@ class ProductDetailView(generic.DetailView):
     context_object_name = 'product'
     model = Product
     template_name = 'product/single_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['form'] = CommentForm
+        context['comments'] = kwargs['object'].comment_set.all()
+        return context
 
 
 class ProductListView(generic.ListView):
