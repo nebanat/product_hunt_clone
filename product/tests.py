@@ -83,7 +83,8 @@ class ProductDetailViewTests(TestCase):
         for invalid products
 
         """
-        url = reverse('product:detail', args=(1,))
+        url = reverse('product:detail',
+                      args=('62081693-df61-4675-a5ac-e9998f575422',))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 

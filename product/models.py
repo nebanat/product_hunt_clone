@@ -2,9 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 
-DEFAULT_ID = 1
-
-# app_label = 'product'
+app_label = 'product'
 
 
 # Create your models here.
@@ -25,17 +23,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Comment(models.Model):
-    """
-        A description of the comment model
-        data: text, product(Foreign key),
-    """
-    text = models.CharField(max_length=400)
-    # product = models.ForeignKey(Product, on_delete=models.CASCADE, default=DEFAULT_ID)
-    created_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.text
-
