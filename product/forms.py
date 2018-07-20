@@ -1,11 +1,11 @@
-from django.forms import ModelForm, TextInput, Textarea
-from .models import Product
+from django.forms import ModelForm, TextInput, Textarea, Select
+from .models import Product, Category
 
 
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'link', 'description']
+        fields = ['name', 'link', 'description', 'categories']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)

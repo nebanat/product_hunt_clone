@@ -1,0 +1,22 @@
+{% if categories %}
+    <span class="tag is-light">{{ categories|first }}</span>
+{% endif %}
+
+{% if categories|length > 1 %}
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button is-white is-small" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>+{{ categories|slice:"1:"|length }}</span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+        <div class="dropdown-content">
+            {% for category in categories|slice:"1:" %}
+              <p class="tag is-light">
+                {{ category }}
+              </p><br>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endif %}
